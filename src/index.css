@@ -1,3 +1,9 @@
 @tailwind base;
+
+*
+{
+    font-family: "Ubuntu"
+}
+
 @tailwind components;
 @tailwind utilities;

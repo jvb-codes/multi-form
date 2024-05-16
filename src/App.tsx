@@ -1,8 +1,19 @@
+import SideBar from "./SidebarBackground/SideBar";
+import Steps from "./Steps/Steps";
+import SmallScreenNav from "./Navigation/SmallScreenNav";
+import Form from "./Forms/Form";
+import FormContextProvider from "./context/FormContext/formContext";
+
 function App() {
   return (
-    <>
-      <h1 className=" text-8xl"> Hello</h1>
-    </>
+    <div className=" h-screen sm:flex bg-lightGray">
+      <SideBar />
+      <FormContextProvider>
+        <Steps />
+        <Form />
+        <SmallScreenNav />
+      </FormContextProvider>
+    </div>
   );
 }
 
