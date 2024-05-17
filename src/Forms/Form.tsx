@@ -3,6 +3,7 @@ import PersonalInfoForm from "./PersonalInfoForm/PersonalInfoForm";
 import FormContainer from "./component/FormContainer";
 import { FormsContext } from "../context/FormContext/formContext";
 import { SelectPlanForm } from "./SelectPlanForm/SelectPlanForm";
+import ToggleContextProvider from "../context/ToggleContext/toggleContext";
 
 function Form() {
   const { currentForm } = useContext(FormsContext);
@@ -15,14 +16,16 @@ function Form() {
   ];
 
   return (
-    <FormContainer>
-      {forms.map((item) => {
-        if (item.id === currentForm) {
-          return item.component;
-        }
-        return null;
-      })}
-    </FormContainer>
+    <ToggleContextProvider>
+      <FormContainer>
+        {forms.map((item) => {
+          if (item.id === currentForm) {
+            return item.component;
+          }
+          return null;
+        })}
+      </FormContainer>
+    </ToggleContextProvider>
   );
 }
 
