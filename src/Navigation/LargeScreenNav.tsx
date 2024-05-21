@@ -11,13 +11,19 @@ function LargeScreenNav() {
   });
 
   return (
-    <div className="flex justify-between items-center">
-      <p
-        onClick={handlePreviousForm}
-        className="hidden sm:block text-denim cursor-pointer "
-      >
-        Go back
-      </p>
+    <div
+      className={`flex items-center sm:w-full ${
+        currentForm === 1 ? "justify-end" : "justify-between"
+      }`}
+    >
+      {currentForm !== 1 && (
+        <p
+          onClick={handlePreviousForm}
+          className="hidden cursor-pointer sm:block text-denim "
+        >
+          Go back
+        </p>
+      )}
       <button
         onClick={handleNextForm}
         className=" font-regular bg-denim rounded-sm px-4 py-2 text-white text-[14px] hidden sm:block self-end"

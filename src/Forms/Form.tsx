@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import PersonalInfoForm from "./PersonalInfoForm/PersonalInfoForm";
-import FormContainer from "./component/FormContainer";
+import FormWrapper from "./component/FormContainer";
 import { FormsContext } from "../context/FormContext/formContext";
 import { SelectPlanForm } from "./SelectPlanForm/SelectPlanForm";
 import ToggleContextProvider from "../context/ToggleContext/toggleContext";
@@ -17,14 +17,14 @@ function Form() {
 
   return (
     <ToggleContextProvider>
-      <FormContainer>
+      <FormWrapper>
         {forms.map((item) => {
           if (item.id === currentForm) {
             return item.component;
           }
           return null;
         })}
-      </FormContainer>
+      </FormWrapper>
     </ToggleContextProvider>
   );
 }

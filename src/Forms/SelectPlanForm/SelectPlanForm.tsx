@@ -5,13 +5,13 @@ import LargeScreenNav from "../../Navigation/LargeScreenNav";
 
 export function SelectPlanForm() {
   return (
-    <div className="flex flex-col ">
-      <div className="sm:flex sm:flex-col sm:gap-10 outline sm:min-w-[700px] ">
+    <div className="formContainer">
+      <div className="sm:w-full">
         <SelectPlanFormHeader />
         <PlanSelection />
         <MonthlyYearlyToggle />
-        <LargeScreenNav />
       </div>
+      <LargeScreenNav />
     </div>
   );
 }

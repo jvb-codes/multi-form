@@ -1,37 +1,19 @@
 import { plans } from "../data/plans";
-import { useContext } from "react";
-import { ToggleContext } from "../../../context/ToggleContext/toggleContext";
+import PlanSelectionContent from "./PlanSelectionComps/PlanSelectionContent";
+import PlanSelectionContainer from "./PlanSelectionComps/PlanSelectionContainer";
+import PlanSelectionIcon from "./PlanSelectionComps/PlanSelectionIcon";
 
 function PlanSelection() {
-  const { isChecked } = useContext(ToggleContext);
-
   return (
-    <div className="flex flex-col sm:flex-row  gap-4 sm:min-w-[700px] outline">
+    <div className="flex flex-col gap-4 lg:flex-row ">
       {plans.map((item) => {
         return (
-          <div
-            key={item.planType}
-            className="border border-coolGray hover:border-purplishBlue flex sm:flex-col gap-2 sm:gap-4 p-2 sm:p-8 rounded-lg  items-center sm:items-start sm:flex-grow  sm:flex-shrink hover:bg-veryLightGray sm:outline sm:min-h-[250px] sm:min-w-[200px]"
-          >
-            <div className="p-2 sm:px-0">
-              <img src={item.icon} alt="plan type icon" />
+          <PlanSelectionContainer key={item.planType}>
+            <div className="flex items-center justify-center h-full gap-2 sm:pl-2 lg:pl-0 lg:flex-col lg:items-start lg:justify-around">
+              <PlanSelectionIcon item={item} />
+              <PlanSelectionContent item={item} />
             </div>
-            <div>
-              <p className="font-bold text-denim text-[16px]">
-                {item.planType}
-              </p>
-              <p className="text-coolGray text-[14px]">
-                {`$${
-                  isChecked
-                    ? item.price.yearly + "/yr"
-                    : item.price.monthly + "/mo"
-                }`}
-              </p>
-              <p className="text-[12px] text-denim">{`${
-                isChecked ? "2 Months Free" : ""
-              }`}</p>
-            </div>
-          </div>
+          </PlanSelectionContainer>
         );
       })}
     </div>

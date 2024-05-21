@@ -4,9 +4,11 @@ import LargeScreenNav from "../../Navigation/LargeScreenNav";
 
 function PersonalInfoForm() {
   return (
-    <div className="flex flex-col gap-8">
-      <PersonalInfoHeading />
-      <PersonalInfoInputs />
+    <div className="formContainer">
+      <div className="sm:w-full">
+        <PersonalInfoHeading />
+        <PersonalInfoInputs />
+      </div>
       <LargeScreenNav />
     </div>
   );

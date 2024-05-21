@@ -8,3 +8,19 @@
 @tailwind components;
 
 @tailwind utilities;
+
+
+.formContainer
+{
+    @apply flex flex-col gap-8 sm:justify-around lg:w-[700px]
+}
+
+.formHeader
+{
+    @apply font-bold text-denim text-[24px] sm:text-[32px]
+}
+
+.formInstructions
+{
+    @apply text-coolGray text-[16px]
+}
