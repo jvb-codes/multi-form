@@ -10,10 +10,16 @@ function SmallScreenNav() {
     setCurrentForm,
   });
   return (
-    <div className="bg-white absolute bottom-[0] w-full sm:hidden p-4 text-right flex justify-between items-center">
-      <p onClick={handlePreviousForm} className="text-denim cursor-pointer">
-        Go Back
-      </p>
+    <div
+      className={`bg-white absolute bottom-[0] w-full sm:hidden p-4 text-right flex items-center ${
+        currentForm === 1 ? "justify-end" : "justify-between"
+      }`}
+    >
+      {currentForm !== 1 && (
+        <p onClick={handlePreviousForm} className="cursor-pointer text-denim">
+          Go Back
+        </p>
+      )}
       <Button />
     </div>
   );

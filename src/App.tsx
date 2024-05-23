@@ -3,15 +3,18 @@ import Steps from "./Steps/Steps";
 import SmallScreenNav from "./Navigation/SmallScreenNav";
 import Form from "./Forms/Form";
 import FormContextProvider from "./context/FormContext/formContext";
+import { UserSelectionContextProvider } from "./context/UserSelectionContext/userSelectionContext";
 
 function App() {
   return (
-    <div className=" h-screen sm:flex bg-lightGray">
+    <div className="h-screen sm:flex bg-lightGray">
       <SideBar />
       <FormContextProvider>
-        <Steps />
-        <Form />
-        <SmallScreenNav />
+        <UserSelectionContextProvider>
+          <Steps />
+          <Form />
+          <SmallScreenNav />
+        </UserSelectionContextProvider>
       </FormContextProvider>
     </div>
   );

@@ -1,0 +1,33 @@
+.checkbox-container
+{
+    @apply relative inline-block w-6 h-6 cursor-pointer;
+}
+
+.checkbox-container input
+{
+    @apply absolute w-0 h-0 opacity-0;
+}
+
+.checkbox-container .checkmark
+{
+    @apply absolute top-0 left-0 w-full h-full bg-white border border-gray-400 rounded;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.checkbox-container input:checked + .checkmark
+{
+    @apply border-transparent bg-purplishBlue;
+}
+
+.checkbox-container .checkmark::after
+{
+    content: "\002714";
+    @apply absolute w-3 h-3 text-white left-1/2 top-[5px];
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transition: transform 0.2s;
+}
+
+.checkbox-container input:checked + .checkmark::after
+{
+    transform: translate(-50%, -50%);
+}

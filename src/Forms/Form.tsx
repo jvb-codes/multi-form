@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import PersonalInfoForm from "./PersonalInfoForm/PersonalInfoForm";
 import FormWrapper from "./component/FormContainer";
+import PersonalInfoForm from "./PersonalInfoForm/PersonalInfoForm";
+import SelectPlanForm from "./SelectPlanForm/SelectPlanForm";
+import AddOnsForm from "./AddOnsForm/AddOnsForm";
 import { FormsContext } from "../context/FormContext/formContext";
-import { SelectPlanForm } from "./SelectPlanForm/SelectPlanForm";
 import ToggleContextProvider from "../context/ToggleContext/toggleContext";
 
 function Form() {
@@ -11,7 +12,7 @@ function Form() {
   const forms = [
     { id: 1, component: <PersonalInfoForm /> },
     { id: 2, component: <SelectPlanForm /> },
-    { id: 3, component: "Form 3" },
+    { id: 3, component: <AddOnsForm /> },
     { id: 4, component: "Form 4" },
   ];
 

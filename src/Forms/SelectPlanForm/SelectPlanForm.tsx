@@ -3,7 +3,7 @@ import PlanSelection from "./components/PlanSelection";
 import MonthlyYearlyToggle from "./components/MontlyYearlyToggle";
 import LargeScreenNav from "../../Navigation/LargeScreenNav";
 
-export function SelectPlanForm() {
+function SelectPlanForm() {
   return (
     <div className="formContainer">
       <div className="sm:w-full">
@@ -15,3 +15,5 @@ export function SelectPlanForm() {
     </div>
   );
 }
+
+export default SelectPlanForm;

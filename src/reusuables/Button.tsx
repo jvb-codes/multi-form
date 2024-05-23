@@ -9,7 +9,7 @@ function Button() {
   return (
     <button
       onClick={handleNextForm}
-      className=" font-regular bg-denim rounded-sm px-4 py-2 text-white text-[14px]"
+      className="font-regular bg-denim rounded-sm px-4 py-2 text-white text-[14px]"
     >
       Next Step
     </button>
