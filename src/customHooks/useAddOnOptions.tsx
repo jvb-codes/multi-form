@@ -1,26 +1,26 @@
-// import addOnsData from "../Forms/AddOnsForm/data/addOnsData";
-import { AddOnsType } from "../Forms/AddOnsForm/types/types";
+import { UseAddOnOptionsArgs, AddOptionArgs } from "./types/types";
+import {
+  changeInputBackGround,
+  updateSelectedAddOns,
+} from "../Forms/AddOnsForm/utils/addOptionsUtils";
 
-function useAddOnOptions(
-  selectedAddOns: AddOnsType[],
-  setSelectedAddOns: React.Dispatch<React.SetStateAction<AddOnsType[]>>
-) {
-  function addOption(
-    e: React.ChangeEvent<HTMLInputElement>,
-    id: number,
-    type: string,
-    price: number,
-    setIsChecked: React.Dispatch<React.SetStateAction<boolean>>
-  ) {
-    const checked = e.target.checked;
+function useAddOnOptions({
+  selectedAddOns,
+  setSelectedAddOns,
+}: UseAddOnOptionsArgs) {
+  function addOption({ ev, id, type, price, setIsChecked }: AddOptionArgs) {
+    //change Input BG
+    changeInputBackGround({ ev, setIsChecked });
 
-    setIsChecked(checked);
-    const update = [
-      ...selectedAddOns,
-      { id: id, addOnType: type, addOnPrice: price },
-    ];
-
-    setSelectedAddOns(update);
+    //update add on state
+    updateSelectedAddOns({
+      ev,
+      selectedAddOns,
+      id,
+      type,
+      price,
+      setSelectedAddOns,
+    });
   }
 
   return [addOption];

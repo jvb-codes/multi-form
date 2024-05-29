@@ -10,7 +10,7 @@ function Option({ id, type, description, price }: OptionProps) {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const [addOption] = useAddOnOptions(selectedAddOns, setSelectedAddOns);
+  const [addOption] = useAddOnOptions({ selectedAddOns, setSelectedAddOns });
 
   return (
     <div className="flex flex-col gap-8">
@@ -24,12 +24,14 @@ function Option({ id, type, description, price }: OptionProps) {
         <div className="flex gap-8">
           <label className="checkbox-container">
             <input
-              onChange={(e) => addOption(e, id, type, price, setIsChecked)}
+              onChange={(ev) =>
+                addOption({ ev, id, type, price, setIsChecked })
+              }
               type="checkbox"
             />
             <span className="checkmark"></span>
           </label>
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <h1 className="font-bold text-denim text-[16px]">{type}</h1>
             <p className="text-[15px] text-coolGray">{description}</p>
           </div>
