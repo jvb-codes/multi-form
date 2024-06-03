@@ -8,9 +8,15 @@ function useAddOnOptions({
   selectedAddOns,
   setSelectedAddOns,
 }: UseAddOnOptionsArgs) {
-  function addOption({ ev, id, type, price, setIsChecked }: AddOptionArgs) {
+  function addOption({ ev, id, type, price }: AddOptionArgs) {
     //change Input BG
-    changeInputBackGround({ ev, setIsChecked });
+
+    changeInputBackGround({
+      ev,
+      id,
+      selectedAddOns,
+      setSelectedAddOns,
+    });
 
     //update add on state
     updateSelectedAddOns({

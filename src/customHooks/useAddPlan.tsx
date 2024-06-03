@@ -7,8 +7,7 @@ function useAddPlan(
   planType: string,
   cost: { monthly: number; yearly: number }
 ) {
-  const { selectedPlan, setSelectedPlan, setSelectedId } =
-    useContext(UserSelectionContext);
+  const { setSelectedPlan, setSelectedId } = useContext(UserSelectionContext);
   const { isChecked } = useContext(ToggleContext);
 
   function addPlan() {
@@ -22,8 +21,6 @@ function useAddPlan(
 
     setSelectedId(planId);
   }
-
-  console.log(selectedPlan);
 
   return { addPlan };
 }

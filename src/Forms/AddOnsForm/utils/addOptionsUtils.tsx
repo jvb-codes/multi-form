@@ -2,16 +2,24 @@ import {
   ChangeInputBackGroundArgs,
   UpdateSelectedAddOnsArgs,
 } from "../../../customHooks/types/types";
+import addOnsData from "../data/addOnsData";
 
 export function changeInputBackGround({
   ev,
-  setIsChecked,
+  id,
+  selectedAddOns,
+  setSelectedAddOns,
 }: ChangeInputBackGroundArgs) {
-  const checked = ev.target.checked;
-  setIsChecked(checked);
-  return;
-}
+  const update = addOnsData.map((item) => {
+    if (item.id === id) {
+      return { ...item, isSelected: true }; // Return updated item
+    }
+    return item; // Return unchanged item
+  });
 
+  console.log(update); // Log the updated array
+  setSelectedAddOns(update); // Update the state with the new array
+}
 export function updateSelectedAddOns({
   ev,
   selectedAddOns,
