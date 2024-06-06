@@ -8,29 +8,38 @@ import ToggleContextProvider, {
   ToggleContext,
 } from "../context/ToggleContext/toggleContext";
 import LargeScreenNav from "../Navigation/LargeScreenNav";
-
 import { UserSelectionContext } from "../context/UserSelectionContext/userSelectionContext";
+import SelectedAddOns from "./SummaryForm/SelectedAddOns";
+import SelectedPlan from "./SummaryForm/SelectedPlan";
 
 function SummaryForm() {
-  const { selectedPlan, selectedAddOns } = useContext(UserSelectionContext);
+  const { addOns, plans } = useContext(UserSelectionContext);
   const { isChecked } = useContext(ToggleContext);
 
-  const addOnTotal = selectedAddOns
-    .map((item) => {
-      return item.addOnPrice;
-    })
-    .reduce((accumulator, currentVal) => accumulator + currentVal, 0);
+  const getTotal = () => {
+    const addOnTotal = addOns.reduce((sum, item) => {
+      if (item.isSelected) {
+        return sum + item.price;
+      }
+      return sum;
+    }, 0);
 
-  const addOns = selectedAddOns.map((item) => {
-    return (
-      <div className="flex justify-between">
-        <p className="formInstructions">{item.addOnType}</p>
-        <p className=" text-denim">
-          +${item.addOnPrice}/{isChecked ? "yr" : "mo"}
-        </p>
-      </div>
-    );
-  });
+    const selectedPlan = plans.find((item) => item.isSelected);
+    if (selectedPlan && isChecked) {
+      return selectedPlan.price.yearly + addOnTotal;
+    }
+    if (selectedPlan && !isChecked) {
+      return selectedPlan.price.monthly + addOnTotal;
+    }
+    return null;
+  };
+
+  const total = getTotal();
+
+  function Total() {
+    return <></>;
+  }
+
   return (
     <div className=" formContainer">
       <div className="flex flex-col gap-8">
@@ -41,27 +50,15 @@ function SummaryForm() {
           </p>
         </div>
         <div className="flex flex-col gap-4 bg-veryLightGray">
-          <div className="">
-            <div className="flex justify-between p-4 ">
-              <div className="">
-                <p className="font-bold text-denim">
-                  {selectedPlan?.planType} ({isChecked ? "Yearly" : "Monthly"})
-                </p>
-                <p className="underline formInstructions">Change</p>
-              </div>
-              <p className="font-bold text-denim">
-                ${selectedPlan?.cost}/{isChecked ? "yr" : "mo"}
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 p-4">{addOns}</div>
+          <SelectedPlan />
+          <SelectedAddOns />
         </div>
-        <div className="flex justify-between p-4">
+        <div className="flex justify-between p-4 outline">
           <p className="formInstructions">
             Total (per {isChecked ? "year" : "month"})
           </p>
           <p className="text-purplishBlue text-[20px] font-bold">
-            ${selectedPlan?.cost + addOnTotal}/{isChecked ? "yr" : "mo"}
+            +${total}/{isChecked ? "yr" : "mo"}
           </p>
         </div>
       </div>

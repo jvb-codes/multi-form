@@ -1,25 +1,17 @@
 import { useContext } from "react";
 import { UserSelectionContext } from "../context/UserSelectionContext/userSelectionContext";
-import { ToggleContext } from "../context/ToggleContext/toggleContext";
 
-function useAddPlan(
-  planId: number,
-  planType: string,
-  cost: { monthly: number; yearly: number }
-) {
-  const { setSelectedPlan, setSelectedId } = useContext(UserSelectionContext);
-  const { isChecked } = useContext(ToggleContext);
+function useAddPlan(id: number) {
+  const { plans, setPlans } = useContext(UserSelectionContext);
 
   function addPlan() {
-    const update = {
-      id: planId,
-      planType: planType,
-      cost: isChecked ? cost.yearly : cost.monthly,
-    };
-
-    setSelectedPlan(update);
-
-    setSelectedId(planId);
+    const update = plans.map((item) => {
+      if (item.id === id) {
+        return { ...item, isSelected: true };
+      }
+      return { ...item, isSelected: false };
+    });
+    setPlans(update);
   }
 
   return { addPlan };

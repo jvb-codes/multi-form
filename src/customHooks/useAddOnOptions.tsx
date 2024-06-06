@@ -1,32 +1,18 @@
-import { UseAddOnOptionsArgs, AddOptionArgs } from "./types/types";
-import {
-  changeInputBackGround,
-  updateSelectedAddOns,
-} from "../Forms/AddOnsForm/utils/addOptionsUtils";
+import { useContext } from "react";
+import { UserSelectionContext } from "../context/UserSelectionContext/userSelectionContext";
 
-function useAddOnOptions({
-  selectedAddOns,
-  setSelectedAddOns,
-}: UseAddOnOptionsArgs) {
-  function addOption({ ev, id, type, price }: AddOptionArgs) {
-    //change Input BG
+function useAddOnOptions() {
+  const { addOns, setAddOns } = useContext(UserSelectionContext);
 
-    changeInputBackGround({
-      ev,
-      id,
-      selectedAddOns,
-      setSelectedAddOns,
+  function addOption(id: number) {
+    const update = addOns.map((item) => {
+      if (id === item.id) {
+        return { ...item, isSelected: true };
+      }
+      return item;
     });
 
-    //update add on state
-    updateSelectedAddOns({
-      ev,
-      selectedAddOns,
-      id,
-      type,
-      price,
-      setSelectedAddOns,
-    });
+    setAddOns(update);
   }
 
   return [addOption];

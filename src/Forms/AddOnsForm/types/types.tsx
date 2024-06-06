@@ -1,7 +1,9 @@
 export type AddOnsType = {
   id: number;
-  addOnType: string;
-  addOnPrice: number;
+  type: string;
+  description: string;
+  price: number;
+  isSelected: boolean;
 };
 
 export type OptionProps = {
@@ -9,4 +11,6 @@ export type OptionProps = {
   type: string;
   description: string;
   price: number;
+  isSelected: boolean;
+  setAddOns: React.Dispatch<React.SetStateAction<AddOnsType[]>>;
 };

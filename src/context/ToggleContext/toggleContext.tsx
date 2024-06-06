@@ -6,12 +6,12 @@ import {
 } from "react";
 
 const defaultContextValue = {
-  isChecked: null,
+  isChecked: false,
   setIsChecked: () => {},
 };
 
 type ToggleContextType = {
-  isChecked: boolean | null;
+  isChecked: boolean | undefined;
   setIsChecked: React.Dispatch<SetStateAction<boolean>>;
 };
 

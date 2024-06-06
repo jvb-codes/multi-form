@@ -18,7 +18,7 @@ function MonthlyYearlyToggle() {
       <label className="switch ">
         <input
           onChange={handleCheck}
-          value={isChecked}
+          checked={isChecked}
           type="checkbox"
           className="switch input"
         />

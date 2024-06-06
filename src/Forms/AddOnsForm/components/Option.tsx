@@ -1,16 +1,10 @@
 import { OptionProps } from "../types/types";
-import { useContext } from "react";
 import useAddOnOptions from "../../../customHooks/useAddOnOptions";
-import { UserSelectionContext } from "../../../context/UserSelectionContext/userSelectionContext";
 import "../css/checkbox.css";
 
 function Option({ id, type, description, price, isSelected }: OptionProps) {
-  const { selectedAddOns, setSelectedAddOns } =
-    useContext(UserSelectionContext);
+  const [addOption] = useAddOnOptions();
 
-  const [addOption] = useAddOnOptions({ selectedAddOns, setSelectedAddOns });
-
-  console.log(isSelected);
   return (
     <div className="flex flex-col gap-8">
       <div
@@ -23,8 +17,9 @@ function Option({ id, type, description, price, isSelected }: OptionProps) {
         <div className="flex gap-8">
           <label className="checkbox-container">
             <input
-              onChange={(ev) => addOption({ ev, id, type, price })}
+              onChange={() => addOption(id)}
               type="checkbox"
+              checked={isSelected}
             />
             <span className="checkmark"></span>
           </label>

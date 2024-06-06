@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
 export type PlanSelectionContainerProps = PropsWithChildren<{
-  planId: number;
+  id: number;
   planType: string;
   cost: { monthly: number; yearly: number };
   isSelected: boolean;

@@ -4,12 +4,10 @@ import useAddPlan from "../../../../customHooks/useAddPlan";
 
 function PlanSelectionContainer({
   children,
-  planId,
-  planType,
-  cost,
+  id,
   isSelected,
 }: PlanSelectionContainerProps) {
-  const { addPlan } = useAddPlan(planId, planType, cost);
+  const { addPlan } = useAddPlan(id);
 
   return (
     <div
