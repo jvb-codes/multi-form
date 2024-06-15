@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { UserSelectionContext } from "../context/UserSelectionContext/userSelectionContext";
 import { ToggleContext } from "../context/ToggleContext/toggleContext";
 
@@ -24,10 +24,7 @@ function useUpdateCostOnToggle() {
     }
   }
 
-  // useEffect(() => {
-  //   updateCostOnToggle();
-  // }, [isChecked]);
-  return;
+  return { updateCostOnToggle };
 }
 
 export default useUpdateCostOnToggle;
