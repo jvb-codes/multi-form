@@ -1,35 +1,37 @@
 import useHandleForm from "../customHooks/useFormNavigation";
 import { useContext } from "react";
 import { FormsContext } from "../context/FormContext/formContext";
+import PrevFormBtn from "./components/Buttons/PrevFormBtn";
+import NextFormBtn from "./components/Buttons/NextFormBtn";
+import ConfirmBtn from "./components/Buttons/ConfirmBtn";
+import useValidateForm from "../customHooks/useValidateForm";
 
 function LargeScreenNav() {
-  const { currentForm, setCurrentForm } = useContext(FormsContext);
+  const { currentForm, setCurrentForm, isFormValid } = useContext(FormsContext);
 
   const { handleNextForm, handlePreviousForm } = useHandleForm({
     currentForm,
     setCurrentForm,
   });
 
+  useValidateForm();
+
   return (
     <div
-      className={`flex items-center sm:w-full ${
+      className={`hidden sm:flex items-center sm:w-full ${
         currentForm === 1 ? "justify-end" : "justify-between"
       }`}
     >
-      {currentForm !== 1 && (
-        <p
-          onClick={handlePreviousForm}
-          className="hidden cursor-pointer sm:block text-denim "
-        >
-          Go back
-        </p>
-      )}
-      <button
-        onClick={handleNextForm}
-        className=" font-regular bg-denim rounded-sm px-4 py-2 text-white text-[14px] hidden sm:block self-end"
-      >
-        Next Step
-      </button>
+      <PrevFormBtn
+        isFirstForm={currentForm}
+        handlePreviousForm={handlePreviousForm}
+      />
+      <NextFormBtn
+        handleNextForm={handleNextForm}
+        validation={!isFormValid}
+        isLastForm={currentForm}
+      />
+      <ConfirmBtn isLastForm={currentForm} />
     </div>
   );
 }

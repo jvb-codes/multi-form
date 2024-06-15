@@ -1,0 +1,32 @@
+export const inputs = [
+  {
+    id: 1,
+    name: "name",
+    type: "text",
+    placeholder: "e.g. Stephen King",
+    label: "Name",
+    errorMessage: "This field is required",
+    required: true,
+    isInputValid: false,
+  },
+  {
+    id: 2,
+    name: "email",
+    type: "text",
+    placeholder: "e.g. stephenking@lorem.com",
+    label: "Email Address",
+    errorMessage: "This field is required",
+    required: true,
+    isInputValid: false,
+  },
+  {
+    id: 3,
+    name: "phoneNumber",
+    type: "text",
+    placeholder: "e.g. +1 234 567 890",
+    label: "Phone Number",
+    errorMessage: "This field is required",
+    required: true,
+    isInputValid: false,
+  },
+];

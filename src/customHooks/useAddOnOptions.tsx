@@ -7,7 +7,7 @@ function useAddOnOptions() {
   function addOption(id: number) {
     const update = addOns.map((item) => {
       if (id === item.id) {
-        return { ...item, isSelected: true };
+        return { ...item, isSelected: !item.isSelected };
       }
       return item;
     });

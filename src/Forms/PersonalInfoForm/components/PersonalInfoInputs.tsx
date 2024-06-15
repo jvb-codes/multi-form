@@ -1,24 +1,46 @@
-import { personalInfoData } from "../../data/formData";
+import { useContext } from "react";
+import { FormsContext } from "../../../context/FormContext/formContext";
+import Inputs from "./Inputs";
 
 function PersonalInfoInputs() {
+  const { values, setValues, inputsData, setInputsData } =
+    useContext(FormsContext);
+
+  function handleOnChange(e: React.ChangeEvent<HTMLInputElement>, id: number) {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+    const update = inputsData.map((item) => {
+      if (item.id === id && e.target.validity.valid) {
+        return { ...item, isInputValid: true };
+      }
+      if (item.id === id && !e.target.validity.valid) {
+        return { ...item, isInputValid: false };
+      }
+      return item;
+    });
+    setInputsData(update);
+  }
+
   return (
     <>
-      {personalInfoData.map((item) => (
-        <>
-          <div key={item.id} className="flex flex-col mt-7 ">
-            <label className="text-denim text-[12px] font-bold">
-              {item.label}
-            </label>
-            <input
-              className="p-2 border rounded-sm outline-none border-lightGray "
-              placeholder={item.placeholder}
-              type={item.type}
-            />
-          </div>
-        </>
+      {inputsData.map((input) => (
+        <Inputs
+          key={input.id}
+          handleOnChange={handleOnChange}
+          value={values[input.name]}
+          id={input.id}
+          name={input.name}
+          type={input.type}
+          placeholder={input.placeholder}
+          label={input.label}
+          errorMessage={input.errorMessage}
+          required={input.required}
+          isInputValid={input.isInputValid}
+        />
       ))}
     </>
   );
 }
-
 export default PersonalInfoInputs;

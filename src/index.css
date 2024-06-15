@@ -24,3 +24,13 @@
 {
     @apply text-coolGray text-[16px]
 }
+
+/*👉.error-message:has(+ input[focused="true"])
+{
+    display: block;
+}👈*/
+
+input:invalid[focused="true"]
+{
+    @apply border-red-600
+}

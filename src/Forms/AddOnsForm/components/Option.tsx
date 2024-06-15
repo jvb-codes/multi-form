@@ -15,7 +15,7 @@ function Option({ id, type, description, price, isSelected }: OptionProps) {
         } `}
       >
         <div className="flex gap-8">
-          <label className="checkbox-container">
+          <label className="cursor-pointer checkbox-container">
             <input
               onChange={() => addOption(id)}
               type="checkbox"

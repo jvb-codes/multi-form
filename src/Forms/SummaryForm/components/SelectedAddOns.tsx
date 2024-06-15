@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { UserSelectionContext } from "../../context/UserSelectionContext/userSelectionContext";
-import { ToggleContext } from "../../context/ToggleContext/toggleContext";
+import { UserSelectionContext } from "../../../context/UserSelectionContext/userSelectionContext";
+import { ToggleContext } from "../../../context/ToggleContext/toggleContext";
 
 function SelectedAddOns() {
   const { addOns } = useContext(UserSelectionContext);

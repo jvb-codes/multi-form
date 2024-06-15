@@ -8,7 +8,7 @@ function PlanSelection() {
   const { plans } = useContext(UserSelectionContext);
 
   return (
-    <div className="flex flex-col gap-4 lg:flex-row">
+    <div className="flex flex-col gap-4 cursor-pointer lg:flex-row">
       {plans.map((item) => {
         return (
           <PlanSelectionContainer
