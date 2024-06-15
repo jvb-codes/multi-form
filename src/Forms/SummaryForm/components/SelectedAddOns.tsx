@@ -11,9 +11,9 @@ function SelectedAddOns() {
       <div className="flex justify-between">
         <p className="formInstructions">{item.type}</p>
         {isChecked ? (
-          <p className="text-denim">+${item.price}/yr</p>
+          <p className="text-denim">+${item.price.yearly}/yr</p>
         ) : (
-          <p className="text-denim">+${item.price}/mo</p>
+          <p className="text-denim">+${item.price.monthly}/mo</p>
         )}
       </div>
     ) : null

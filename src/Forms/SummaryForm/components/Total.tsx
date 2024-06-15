@@ -8,8 +8,11 @@ function Total() {
 
   const getTotal = () => {
     const addOnTotal = addOns.reduce((sum, item) => {
-      if (item.isSelected) {
-        return sum + item.price;
+      if (item.isSelected && !isChecked) {
+        return sum + item.price.monthly;
+      }
+      if (item.isSelected && isChecked) {
+        return sum + item.price.yearly;
       }
       return sum;
     }, 0);
