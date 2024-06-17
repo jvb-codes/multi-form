@@ -1,5 +1,5 @@
 import SummaryFormHeader from "./components/SummarFormHeader";
-import SelectedPlan from "../SummaryForm/components/SelectedPlan";
+import SelectedPlan from "./components/SelectedPlan";
 import SelectedAddOns from "./components/SelectedAddOns";
 import Total from "./components/Total";
 import LargeScreenNav from "../../Navigation/LargeScreenNav";

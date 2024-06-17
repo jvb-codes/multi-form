@@ -31,7 +31,7 @@ function LargeScreenNav() {
         validation={!isFormValid}
         isLastForm={currentForm}
       />
-      <ConfirmBtn isLastForm={currentForm} />
+      <ConfirmBtn isLastForm={currentForm} handleNextForm={handleNextForm} />
     </div>
   );
 }
