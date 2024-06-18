@@ -38,6 +38,7 @@ function PersonalInfoInputs() {
           errorMessage={input.errorMessage}
           required={input.required}
           isInputValid={input.isInputValid}
+          pattern={input.pattern}
         />
       ))}
     </>

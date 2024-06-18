@@ -22,6 +22,7 @@ const defaultContextValue = {
       errorMessage: "",
       required: true,
       isInputValid: false,
+      pattern: "",
     },
   ],
   setInputsData: () => {},
@@ -51,6 +52,7 @@ export type InputsDataType = {
   errorMessage: string;
   required: boolean;
   isInputValid: boolean;
+  pattern?: string;
 };
 
 export type ValuesType = {
